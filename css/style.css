@@ -6,6 +6,14 @@
 body{
     box-sizing: border-box;
     background-color: #242424;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1{
+    color: #ffffff;
+    text-align: center;
+    margin: 1rem;
+    text-transform: uppercase;
 }
 
 .calculadora{
