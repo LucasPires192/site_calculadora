@@ -1,4 +1,5 @@
 let resultado = document.getElementById("resultado");
+let historico = document.getElementById("historico");
 let valor1;
 let valor2;
 let operacao;
@@ -10,6 +11,14 @@ function setResultado(x){
 
 function getResultado(){
     return resultado.innerText;
+}
+
+function setHistorico(x){
+    historico.textContent = x;
+}
+
+function getHistorico(){
+    return historico.innerText;
 }
 
 function setValor1(x){
@@ -90,6 +99,21 @@ function adicionar(n){
 function adicionarOperacao(x){
     setOperacao(x);
 
+    switch(x){
+        case 1: 
+            setHistorico(getHistorico() + getResultado() + " + ");
+            break;
+        case 2: 
+            setHistorico(getHistorico() + getResultado() + " - ");
+            break;
+        case 3: 
+            setHistorico(getHistorico() + getResultado() + " * ");
+            break;
+        case 4: 
+            setHistorico(getHistorico() + getResultado() + " / ");
+            break;
+    }
+
     if(isNaN(getValor1())){
         setValor1(getResultado());
         setResultado("");
@@ -98,7 +122,8 @@ function adicionarOperacao(x){
 
 function calcular(){
     setValor2(getResultado());
-
+    setHistorico(getHistorico() + getResultado() + " = ")
+    
     switch(getOperacao()){
         case 1:
             setResultado(somar(getValor1(), getValor2()));
@@ -113,17 +138,16 @@ function calcular(){
             setResultado(dividir(getValor1(), getValor2()));
             break;
     }
+
     setValor1("");
     setValor2("");
     setOperacao("");
-
     setFimConta(true);
 }
 
-
-
 function limpar(){
     setResultado("");
+    setHistorico("");
     setValor1("");
     setValor2("");
     setOperacao("");
